@@ -13,7 +13,6 @@ const app = new express()
     //HANDLESBARS
     app.engine('handlebras', handlebars({defaultLayout: 'main'}))
     app.set('view engine', 'handlebars')
-
 //rotas
 
 
