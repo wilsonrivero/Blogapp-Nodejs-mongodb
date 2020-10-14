@@ -6,6 +6,13 @@ const app = new express()
 //const mongosse = require ('mongosse')
 
 //CONFIG
+    //bodyParser
+    app.use(bodyParser.urlencoded({extended: true}))
+    app.use(bodyParser.json())
+    
+    //HANDLESBARS
+    app.engine('handlebras', handlebars({defaultLayout: 'main'}))
+    app.set('view engine', 'handlebars')
 
 //rotas
 
