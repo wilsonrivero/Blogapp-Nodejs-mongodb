@@ -3,6 +3,7 @@ const express = require('express')
 const handlebars = require('express-handlebars')
 const bodyParser =require('body-parser')
 const app = new express()
+const admin = require('./routes/admin')//here we are calling the route
 //const mongosse = require ('mongosse')
 
 //CONFIG
@@ -13,8 +14,9 @@ const app = new express()
     //HANDLESBARS
     app.engine('handlebras', handlebars({defaultLayout: 'main'}))
     app.set('view engine', 'handlebars')
-//rotas
 
+//routes
+    app.use('/adm', admin)//"/admin"  you have to use a prexi
 
 //outhers
 const PORT = 3000
