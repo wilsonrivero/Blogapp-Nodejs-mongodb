@@ -1,5 +1,5 @@
 const express = require('express')
-const router = express.Router()//this is for export routs from another files
+const router = express.Router()//this is for export routs from to another files
 
 
 router.get('/', (req, res) =>{
@@ -7,10 +7,14 @@ router.get('/', (req, res) =>{
 })
 
 router.get('/post', (req,res) =>{
-    res.render('admin/test')
+    res.send('Page blog')
 })
 router.get('/categories',(req,res)=>{
-    res.send('Page categories')
-} )
+    res.render('admin/categories')
+})
+
+router.get('/categories/add', (req,res) =>{
+    res.render('admin/addcat')
+})
 
 module.exports = router
