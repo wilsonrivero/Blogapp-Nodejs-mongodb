@@ -6,8 +6,8 @@ const app = new express()
 const admin = require('./routes/admin')//here we are calling the route
 const path = require('path') //this is for to manipulate folders
 const { join } = require('path')
+const mongosse = require('mongoose')
 
-//const mongosse = require ('mongosse')
 
 //CONFIG
     //bodyParser
@@ -15,14 +15,31 @@ const { join } = require('path')
     app.use(bodyParser.json())
     
     //HANDLESBARS
-    app.engine('handlebars', handlebars({defaultLayout: 'main'}))
+    app.engine('handlebars', handlebars())
     app.set('view engine', 'handlebars')
 
     //Public
-    app.use(express.static(path.join(__dirname,'public')))//here we show the folder about front-end 
+    //here we show the folder about front-end
+    app.use(express.static(path.join(__dirname,'public'))) 
+
+    //config MIDDLEWARES
+    app.use((req,res,next) =>{
+        console.log('Im middleware')
+        next()
+    })
+
+    //mongosse
+    //here we are connecting with mongodb
+    mongosse.Promise = global.Promise
+    mongosse.connect('mongodb://localhost/bloapp').then(()=>{
+        console.log('Connected successfully')
+    }).catch((erro) =>{
+        console.log('There is a erro' + erro)
+    })
 
 //routes
-    app.use('/admin',admin)//"/admin"  you have to use a prexi
+    //"/admin"  you have to use a prexi
+    app.use('/admin',admin)
 
 //outhers
 const PORT = 3000
