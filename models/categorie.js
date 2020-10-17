@@ -14,7 +14,7 @@ const Categoria = new Schema({
     },
     date:{
         type: Date,
-        default:  Date.now()//here is a value default
+        default: Date.now()//here is a value default
     }
 
 })
