@@ -9,8 +9,15 @@
             <small>{{slug}}</small>
             <br>
             <small>Data de criação: {{date}}</small>
+            <br>
+           <a href="/admin/categories/edit/{{_id}}"> <button class="btn btn-success mt-3">Editar Categoira</button></a>
+
+           <form action="/admin/categories/delete" method="POST">
+               <input type="hidden" name="id" value="{{_id}}" >
+               <button type="submit" class="btn btn-danger mt-2"> Deletar</button>
+           </form> 
         </div>
     </div>
 {{else}}
-
+    <h4>Nenhuma categoria registrada</h4>
 {{/each}}
